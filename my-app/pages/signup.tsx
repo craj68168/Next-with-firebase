@@ -3,23 +3,24 @@ import { Button, Form, Input } from 'antd';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components"
+import { useAuth } from '../context/AuthContext';
 const Container = styled.div`
 margin-top:50px;
 text-align:center
 `
 const Signup = () => {
-//   const {signUp} = AuthContextProvider();
+  const {signUp,user} = useAuth();
+  console.log("user",user);
+  
   const onFinish = async (values: any) => {
-//   try {
-//    const data = await signUp(values.email,values.password)
-//    toast.success("Signup Successfully");
-//    console.log("singup success",data);
+  try {
+   const data = await signUp(values.email,values.password)
+   toast.success("Signup Successfully");
    
-//   } catch (error) {
-//     toast.error(error);
-//     console.log("signup error",error);
+  } catch (error:any) {
+    toast.error(error);
     
-//   }
+  }
    
   };
 

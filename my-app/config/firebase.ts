@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyBWM0KjH2a1OCH27QTJYtWoqKK3_KZ7lPM",
   authDomain: "nextjs-with-firebaseauth-cec38.firebaseapp.com",
@@ -9,3 +10,4 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth()

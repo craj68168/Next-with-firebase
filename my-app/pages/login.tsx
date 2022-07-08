@@ -4,22 +4,24 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from 'next/router';
 import styled from "styled-components"
+import { useAuth } from '../context/AuthContext';
 const Container = styled.div`
 margin-top:50px;
 text-align:center
 `
 const Login = () => {
-//   const { login } = AuthContextProvider()
+  const { login,user } = useAuth()
  const router = useRouter()
+  console.log("login user",user);
   
   const onFinish = async (values: any) => {
-    // try {
-    //   const data = await login(values.email, values.password);
-    //   toast.success("Login Successfully")
-    //   router.push("/dashboard")
-    // } catch (error) { 
-    //   toast.error("Invalid Crediantial")
-    // }
+    try {
+      const data = await login(values.email, values.password);
+      toast.success("Login Successfully")
+      router.push("/")
+    } catch (error) { 
+      toast.error("Invalid Crediantial")
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
