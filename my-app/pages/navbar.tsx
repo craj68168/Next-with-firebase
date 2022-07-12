@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Link from "next/link"
 import { useAuth } from '../context/AuthContext';
-import {  useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 const Navbar = (): JSX.Element => {
   const [open, setOpen] = useState(false);
-  const { user,logout } = useAuth();
+  const { user, logout } = useAuth();
   const router = useRouter()
   return (
-    <Container><Nav><Logo href="">Eli<span>codes</span></Logo>
+    <Nav><Logo href="">Eli<span>codes</span></Logo>
       <Hamburger onClick={() => setOpen(!open)}>
         <span />
         <span />
@@ -17,21 +17,18 @@ const Navbar = (): JSX.Element => {
       <Menu isOpen={open}>
         {user ? <><MenuLink ><Link href="/home"><MenuItem>Home</MenuItem></Link></MenuLink>
           <MenuLink ><Link href="/about"><MenuItem>about</MenuItem></Link></MenuLink>
-          <MenuLink ><Link href="/login"><MenuItem onClick={()=>{
+          <MenuLink ><Link href="/login"><MenuItem onClick={() => {
             logout();
             router.push("/login")
           }}>logout</MenuItem></Link></MenuLink></> : <><MenuLink ><Link href="/login"><MenuItem>login</MenuItem></Link></MenuLink>
           <MenuLink ><Link href="/signup"><MenuItem>signup</MenuItem></Link></MenuLink></>}
       </Menu>
-    </Nav></Container>
+    </Nav>
   )
 }
 
 export default Navbar
 
-const Container = styled.div`
-
-`
 const Nav = styled.div`
 padding:0 2rem;
 display:flex;
