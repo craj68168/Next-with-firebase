@@ -16,100 +16,63 @@ interface FormikInitalValues {
   email: string,
   password: string
 }
-const formikSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid Email").required("Email is required"),
-  password: Yup.string().required("Password is Required").min(6, "Must be 6 Characters")
-})
+// const formikSchema = Yup.object().shape({
+//   email: Yup.string().email("Invalid Email").required("Email is required"),
+//   password: Yup.string().required("Password is Required").min(6, "Must be 6 Characters")
+// })
 const Login = () => {
   const { login, user } = useAuth()
   const router = useRouter()
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: ""
-    },
-    validationSchema: formikSchema,
-    onSubmit: async (values: FormikInitalValues) => {
-      console.log("values",values);
-      
-      await mutateAsync(values);
-    },
-  });
-  const loginApi = async (values: FormikInitalValues) => {
+  const onFinish = async (values: any) => {
     try {
       const data = await login(values.email, values.password);
-      return data
-
-    } catch (error) {
-      return error
-    }
-  }
-
-  const { mutateAsync } = useMutation("login", loginApi, {
-    onSuccess: (data: any) => {
       toast.success("Login Successfully")
       router.push("/")
-    },
-    onError: (err) => {
+
+    } catch (error) {
       toast.error("Invalid Crediantial")
     }
-  })
+  };
 
-
-  // const onFinish = async (values: any) => {
-  //   try {
-  //     const data = await login(values.email, values.password);
-  //     toast.success("Login Successfully")
-  //     router.push("/")
-  //   } catch (error) { 
-  //     toast.error("Invalid Crediantial")
-  //   }
-  // };
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+  };
 
   return (
     <Container>
       <title>Login</title>
       <Form
-        onSubmit={formik.handleSubmit}
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 8 }}
-        autoComplete="off"
+      name="basic"
+      labelCol={{ span: 8 }}
+      wrapperCol={{ span: 8 }}
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      autoComplete="off"
+    >
+      <Form.Item
+        label="email"
+        name="email"
+        rules={[{ required: true, message: 'Please input your email!' }]}
       >
-        <Form.Item
-          label="Email"
-          name="email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        >
-          <Input />
-          <span style={{ color: "red" }}>
-            {formik.touched.email && formik.errors.email
-              ? formik.errors.email
-              : ""}
-          </span>
-        </Form.Item>
+        <Input />
+      </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        >
-          <Input.Password />
-          
-        </Form.Item>
-        <span style={{ color: "red" }}>
-            {formik.touched.password && formik.errors.password
-              ? formik.errors.password
-              : ""}
-          </span>
-        <Form.Item wrapperCol={{ offset: 8, span: 1 }}>
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Form.Item>
-      </Form>
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password />
+      </Form.Item>
+
+      <Form.Item wrapperCol={{ offset: 8, span: 1 }}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
     </Container>
   )
 }
