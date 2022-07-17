@@ -1,9 +1,10 @@
 import React from 'react'
-import { Button, Form, Input } from 'antd';
+import { Form, Input } from 'antd';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components"
 import { useAuth } from '../context/AuthContext';
+import { ButtonComponent } from '../components/atom/Button';
 const Container = styled.div`
 margin-top:50px;
 text-align:center
@@ -60,9 +61,9 @@ const Signup = () => {
    
 
     <Form.Item wrapperCol={{ offset: 8, span: 1 }}>
-      <Button type="primary" htmlType="submit">
+      <ButtonComponent type="primary" htmlType="submit">
         Sign up
-      </Button>
+      </ButtonComponent>
     </Form.Item>
   </Form>
   </Container>

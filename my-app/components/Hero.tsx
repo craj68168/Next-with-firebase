@@ -2,7 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import homeImage from "../assets/hero.png";
 import Image from "next/image";
+import moment from "moment";
 export default function Hero() {
+  // const handleDateChange =(date,name):any=>{
+  //  console.log("normal date",date.target.value);
+  //  console.log(name, moment.utc(date).format("YYYY/MM/DD"));
+  // }
   return (
     <Section id="hero">
       <div className="background">
@@ -24,7 +29,11 @@ export default function Hero() {
           </div>
           <div className="container">
             <label htmlFor="">Check-in</label>
-            <input type="date" />
+            <input name="date" type="date"
+            // onChange={(date):any=>
+            //   handleDateChange(date,"date")
+            // }
+            />
           </div>
           <div className="container">
             <label htmlFor="">Check-out</label>
