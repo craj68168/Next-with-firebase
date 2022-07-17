@@ -22,6 +22,8 @@ const logout = async () => {
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth,(user)=>{
        if(user){
+        console.log("user uid",user);
+        
         setUser({
           uid:user.uid,
           email:user.email,
