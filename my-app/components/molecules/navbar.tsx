@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Link from "next/link"
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { useRouter } from 'next/router';
 const Navbar = (): JSX.Element => {
   const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ const Navbar = (): JSX.Element => {
           <MenuLink ><Link href="/login"><MenuItem onClick={() => {
             logout();
             router.push("/login")
-          }}>logout</MenuItem></Link></MenuLink></> : <><MenuLink ><Link href="/login"><MenuItem>login</MenuItem></Link></MenuLink>
+          }}>Logout</MenuItem></Link></MenuLink></> : <><MenuLink ><Link href="/login"><MenuItem>login</MenuItem></Link></MenuLink>
           <MenuLink ><Link href="/signup"><MenuItem>signup</MenuItem></Link></MenuLink></>}
       </Menu>
     </Nav>

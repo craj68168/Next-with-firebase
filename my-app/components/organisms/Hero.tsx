@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import homeImage from "../assets/hero.png";
+import homeImage from "../../assets/hero.png";
 import Image from "next/image";
 import moment from "moment";
 export default function Hero() {
