@@ -25,7 +25,9 @@ interface FormikInitalValues {
 const Login = () => {
   const { login, user } = useAuth()
   const router = useRouter()
-
+  if (user) {
+    router.push("/")
+  }
   const onFinish = async (values: any) => {
     try {
       const data = await login(values.email, values.password);

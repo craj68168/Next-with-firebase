@@ -8,22 +8,22 @@ const Navbar = (): JSX.Element => {
   const { user, logout } = useAuth();
   const router = useRouter()
   return (
-    <Nav><Logo href="/">Eli<span>codes</span></Logo>
+    <Nav><Logo href="#">Eli<span>codes</span></Logo>
       <Hamburger onClick={() => setOpen(!open)}>
         <span />
         <span />
         <span />
       </Hamburger>
       <Menu isOpen={open}>
-        {user ? <><MenuLink ><Link href="/"><MenuItem>Hero</MenuItem></Link></MenuLink>
-          <MenuLink ><Link href="/"><MenuItem>Services</MenuItem></Link></MenuLink>
-          <MenuLink ><Link href="/"><MenuItem>Recommend</MenuItem></Link></MenuLink>
-          <MenuLink ><Link href="/"><MenuItem>Testimonial</MenuItem></Link></MenuLink>
+        {user ? <><MenuLink ><Link href="#hero"><MenuItem>Hero</MenuItem></Link></MenuLink>
+          <MenuLink ><Link href="#services"><MenuItem>Services</MenuItem></Link></MenuLink>
+          <MenuLink ><Link href="#recommend"><MenuItem>Recommend</MenuItem></Link></MenuLink>
+          <MenuLink ><Link href="#testimonials"><MenuItem>Testimonial</MenuItem></Link></MenuLink>
           <MenuLink ><Link href="/login"><MenuItem onClick={() => {
             logout();
             router.push("/login")
-          }}>Logout</MenuItem></Link></MenuLink></> : <><MenuLink ><Link href="/login"><MenuItem>login</MenuItem></Link></MenuLink>
-          <MenuLink ><Link href="/signup"><MenuItem>signup</MenuItem></Link></MenuLink></>}
+          }}>Logout</MenuItem></Link></MenuLink></> : <><MenuLink ><Link href="/login"><MenuItem>Login</MenuItem></Link></MenuLink>
+          <MenuLink ><Link href="/signup"><MenuItem>Signup</MenuItem></Link></MenuLink></>}
       </Menu>
     </Nav>
   )

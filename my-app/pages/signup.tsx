@@ -30,7 +30,9 @@ const Signup = () => {
     console.log('Failed:', errorInfo);
   };
 
-
+  if (user) {
+    router.push("/")
+  }
   return (
     <Container>
       <title>Signup</title>

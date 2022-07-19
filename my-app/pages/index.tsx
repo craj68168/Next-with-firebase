@@ -6,7 +6,7 @@ import Hero from '@components/organisms/Hero'
 import Recommend from '@components/organisms/Recommend'
 import ScrollToTop from '@components/organisms/ScrollToTop'
 import Services from '@components/organisms/Services'
-import Testimonial from '@components/organisms/Testimonial'
+import Testimonial from '@components/organisms/Testimonials'
 
 const Home: NextPage = () => {
   const {user} = useAuth();
@@ -14,8 +14,10 @@ const Home: NextPage = () => {
   if (!user) {
     router.push("/login")
   }
+ 
   return (
     <>
+    <title>Dashboard</title>
    {/* <ScrollToTop/> */}
    <Hero/>
    <Services/>
