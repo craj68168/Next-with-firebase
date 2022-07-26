@@ -8,7 +8,7 @@ const Navbar = (): JSX.Element => {
   const { user, logout } = useAuth();
   const router = useRouter()
   return (
-    <Nav><Logo href="#">Eli<span>codes</span></Logo>
+    <Nav><Logo href="/">Eli<span>codes</span></Logo>
       <Hamburger onClick={() => setOpen(!open)}>
         <span />
         <span />
@@ -23,7 +23,8 @@ const Navbar = (): JSX.Element => {
             logout();
             router.push("/login")
           }}>Logout</MenuItem></Link></MenuLink></> : <><MenuLink ><Link href="/login"><MenuItem>Login</MenuItem></Link></MenuLink>
-          <MenuLink ><Link href="/signup"><MenuItem>Signup</MenuItem></Link></MenuLink></>}
+          <MenuLink ><Link href="/signup"><MenuItem>Signup</MenuItem></Link></MenuLink>  
+          </>}
       </Menu>
     </Nav>
   )

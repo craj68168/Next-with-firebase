@@ -4,7 +4,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
 }
 
 a {
@@ -14,5 +17,136 @@ a {
 
 * {
   box-sizing: border-box;
+
+}
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.header {
+  background-color: bisque;
+  color: #333;
+  min-height: 350px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.header img {
+  max-width: 400px;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.boxes {
+  min-height: 300px;
+}
+
+.boxes .container {
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+.box {
+  flex: 1;
+  margin: 20px 10px;
+  background-color: aliceblue;
+  color: #333;
+  border-radius: 10px;
+  padding: 15px 10px;
+  box-shadow: rgb(245, 147, 81) 0px 7px 29px 0px;
+  transition: 0.3s ease-in-out;
   
 }
+.box:hover {
+  transform: translateX(0.4rem) translateY(-1rem);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.box h1{
+ text-align: center;
+}
+@media (max-width:768px) {
+  .header .container{
+    flex-direction: column;
+    padding-top: 10px;
+    text-align: center;
+  }
+  .boxes .container{
+    display: block;
+    text-align: center;
+  }
+}
+/* .flex-container {
+  /* height: 500px; */
+/* background-color: #f4f4f4; */
+/* display: flex; */
+/* justify-content: space-between; */
+/* align-items: center; */
+/* flex-direction: row-reverse; */
+/* align-items: center; */
+/* justify-content:space-between; */
+/* flex-direction: column-reverse; */
+/* justify-content: end; */
+/* justify-content: start; */
+/* align-items: start; */
+/* flex-wrap: wrap; */
+/* } */
+
+/* .flex-item {
+  background-color: blue;
+  flex:1;
+  /* flex-basis: 300px; */
+/* margin: 10px; */
+/* width: 100px; */
+/* height: 100px; */
+/* color: white; */
+/* display: flex; */
+/* justify-content: center; */
+/* align-items: center; */
+/* } */
+
+/* .flex-item:nth-of-type(1) { */
+/* align-self: start; */
+/* order: 2; */
+/* flex-basis: 200px; */
+/* flex-grow: 1; */
+/* flex-shrink: 1; */
+/* } */
+
+/* .flex-item:nth-of-type(2) { */
+/* align-self: center; */
+/* order: 1; */
+/* flex-grow: 2; */
+/* flex-shrink: 2; */
+/* } */
+
+/* .flex-item:nth-of-type(3) { */
+/* align-self: end; */
+/* order: 3; */
+/* flex-grow: 1; */
+/* flex-shrink: 3; */
+/* } */
+
+/* 
+1. Flex basis is like widht to its item and flex-grow is like it will be apply to all item and it will cover over all space. 
+2. if use all of them then use on flex container flex grow 1 
+3. Note - if use flex basis 200px and flex grow then its like min width 200px
+4. Order is like index number.
+5. flex shrink will use as flex grow but it will shrink different when brower small or big
+6. flex 1 in item means flex grow, flex shrink and flex basis
+7. flex grow means which child is to be larger.
+8. for same size card use flex-grow 1 on child that provides same size card each
+9. flex shrink for different child is like when u make small browser its child shrink in different rate.
+10. 
+*/
